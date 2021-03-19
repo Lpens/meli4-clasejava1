@@ -18,5 +18,11 @@ public class Main {
         System.out.println("aca vemos que copiamos la cuenta en el constructor en la nueva cuenta");
         System.out.println("beneficiario nueva cuenta " + nuevacuenta.getBeneficiario());
 
+        Fraccion f = new Fraccion(3,5);
+
+        Fraccion result = f.sumar(new Fraccion(1,4));
+
+        System.out.println("el resultado es " + result.getNumerador()+"/"+result.getDenominador());
+
     }
 }
