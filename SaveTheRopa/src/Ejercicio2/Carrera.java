@@ -8,6 +8,8 @@ public class Carrera {
     private String nombre;
     private int cantidadDeVehiculosPermitidos;
     private List<Vehiculo> vehiculos;
+    private SocorristaAuto socorristaAuto = new SocorristaAuto();
+    private  SocorristaMoto socorristaMoto = new SocorristaMoto();
 
     public void darDeAltaAuto(String patente, int aceleracion, int anguloDeGiro, int velocidad)
     {
@@ -50,5 +52,33 @@ public class Carrera {
             vehiculosSortedList.put(pos, v);
         }
         return vehiculosSortedList.get(vehiculosSortedList.lastKey());
+    }
+
+    public Vehiculo getVehiculo(String unaPatente)
+    {
+        for(Vehiculo v: vehiculos)
+        {
+            if (v.getPatente() == unaPatente)
+            {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void socorrerAuto(String patente){
+        Vehiculo v = this.getVehiculo(patente);
+        if (v.getClass().getSimpleName() == "Autos")
+        {
+            socorristaAuto.socorrer((Autos) v);
+        }
+    }
+
+    public void socorrerMoto(String patente){
+        Vehiculo v = this.getVehiculo(patente);
+        if (v.getClass().getSimpleName() == "Motos")
+        {
+            socorristaMoto.socorrer((Motos) v);
+        }
     }
 }
