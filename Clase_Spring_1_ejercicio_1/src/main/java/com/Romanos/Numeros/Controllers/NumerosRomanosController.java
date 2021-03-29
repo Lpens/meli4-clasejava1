@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/numerosapi")
 public class NumerosRomanosController {
     private  final AtomicLong counter = new AtomicLong();
     @GetMapping("/toRoman/{numero}")
