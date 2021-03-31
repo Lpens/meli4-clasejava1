@@ -3,6 +3,7 @@ package com.mercadolibre.foodcalculator.repositories;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mercadolibre.foodcalculator.dto.IngredienteDTO;
+import com.mercadolibre.foodcalculator.exceptions.IngredientNotFound;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
@@ -12,8 +13,7 @@ import java.util.Optional;
 
 @Repository
 public class IngredientRepositoryImpl implements IngredientRepository {
-    public IngredienteDTO findIngredientByName(String name)
-    {
+    public IngredienteDTO findIngredientByName(String name) throws IngredientNotFound {
         List<IngredienteDTO> IngredientList = null;
         IngredienteDTO result = null;
         IngredientList = loadDataBase();
@@ -28,6 +28,7 @@ public class IngredientRepositoryImpl implements IngredientRepository {
             }
 
         }
+        if(result == null) throw  new IngredientNotFound(name);
         return result;
     }
     private List<IngredienteDTO> loadDataBase() {

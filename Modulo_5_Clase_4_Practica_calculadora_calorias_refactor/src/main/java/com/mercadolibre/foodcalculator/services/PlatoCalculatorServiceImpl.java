@@ -3,6 +3,7 @@ package com.mercadolibre.foodcalculator.services;
 import com.mercadolibre.foodcalculator.dto.IngredienteDTO;
 import com.mercadolibre.foodcalculator.dto.PlatoDTO;
 import com.mercadolibre.foodcalculator.dto.PlatoReturnDTO;
+import com.mercadolibre.foodcalculator.exceptions.IngredientNotFound;
 import com.mercadolibre.foodcalculator.repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class PlatoCalculatorServiceImpl implements PlatoCalculatorService {
     private IngredientRepository ingredientRepository;
 
     @Override
-    public PlatoReturnDTO calcularPlato(PlatoDTO plato) {
+    public PlatoReturnDTO calcularPlato(PlatoDTO plato) throws IngredientNotFound {
         PlatoReturnDTO result = new PlatoReturnDTO();
         int caloriasTotales = 0;
         List<Integer> listado = new ArrayList<>();
@@ -55,7 +56,7 @@ public class PlatoCalculatorServiceImpl implements PlatoCalculatorService {
     }
 
     @Override
-    public List<PlatoReturnDTO> calcularListadoPlato(List<PlatoDTO> listadoPlatos) {
+    public List<PlatoReturnDTO> calcularListadoPlato(List<PlatoDTO> listadoPlatos) throws IngredientNotFound {
         List<PlatoReturnDTO> resultList = new ArrayList<>();
         for(PlatoDTO plato : listadoPlatos)
         {
