@@ -20,7 +20,7 @@ public class IngredientRepositoryImpl implements IngredientRepository {
         if (IngredientList != null)
         {
             Optional<IngredienteDTO> item = IngredientList.stream().
-                    filter(IngredienteDTO -> IngredienteDTO.getName().equals(name))
+                    filter(ingredienteDTO -> ingredienteDTO.getName().equals(name))
                     .findFirst();
             if (item.isPresent())
             {
