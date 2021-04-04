@@ -36,7 +36,6 @@ public class ScreenTrackerController {
     @GetMapping("/{linkId}")
     public ModelAndView Redirect(@PathVariable Integer linkId) throws NotFoundException {
         LinkDTO linkToRedirect = linkService.getLink(linkId);
-        linkService.redirectCalled(linkId);
         return new ModelAndView("redirect:"+ linkToRedirect.getUrl());
     }
 
