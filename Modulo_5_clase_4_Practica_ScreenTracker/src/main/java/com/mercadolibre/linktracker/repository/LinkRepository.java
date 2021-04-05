@@ -10,4 +10,5 @@ public interface LinkRepository {
     LinkDTO getLink(Integer linkId) throws NotFoundException;
     MetricsDTO getMetrics(Integer linkId) throws NotFoundException;
     void addView(MetricsDTO metrics, Integer linkId);
+    LinkDTO deleteLink(Integer linkId) throws NotFoundException;
 }

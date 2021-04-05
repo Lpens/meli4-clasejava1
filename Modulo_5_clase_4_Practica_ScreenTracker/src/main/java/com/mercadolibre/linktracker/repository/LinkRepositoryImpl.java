@@ -49,4 +49,11 @@ public class LinkRepositoryImpl implements LinkRepository{
 
         metricList.put(linkId,metrics.getCantidadDeRedirecciones()+1);
     }
+
+    @Override
+    public LinkDTO deleteLink(Integer linkId) throws NotFoundException {
+        LinkDTO result = this.getLink(linkId);
+        urlList.remove(linkId);
+        return result;
+    }
 }
